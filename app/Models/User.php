@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -40,4 +41,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function cars() {
+        return $this->belongsToMany(Car::class, 'appointments')
+        ->withPivot('quantity');
+    }
+
+    /**
+     * public function role() {
+        return $this->hasOne(Roles::class);
+    }
+    */
 }
