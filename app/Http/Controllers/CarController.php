@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateCarRequest;
+use App\Http\Requests\UpdateCarRequest;
 use App\Models\Car;
 use Illuminate\Http\Request;
 
@@ -21,7 +23,7 @@ class CarController extends Controller
     }
 
     //POST crear coche
-    public function store(Request $request)
+    public function store(CreateCarRequest $request)
     {
         $create_car = $request->all();
         Car::create($create_car);
@@ -38,7 +40,7 @@ class CarController extends Controller
     }
 
     //PUT actualizar coches
-    public function update(Request $request, Car $car)
+    public function update(UpdateCarRequest $request, Car $car)
     {
         $update_car = $request->all();
         $car->update($update_car);
