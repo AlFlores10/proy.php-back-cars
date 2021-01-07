@@ -18,4 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('cars', 'App\Http\Controllers\CarController');
+Route::post('users', 'App\Http\Controllers\UserController@store');
+Route::post('login', 'App\Http\Controllers\UserController@login');
+
+
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::apiResource('cars', 'App\Http\Controllers\CarController');
+    Route::post('logout', 'App\Http\Controllers\UserController@logout')->middleware('auth:api');
+});
