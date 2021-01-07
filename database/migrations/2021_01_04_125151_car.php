@@ -15,10 +15,11 @@ class Car extends Migration
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 50);
+            $table->string('name', 50)->unique();
             $table->string('maxSpeed', 20);
             $table->string('tank', 10);
             $table->string('photo');
+            $table->integer('prize');
             $table->timestamps();
         });
     }

@@ -14,6 +14,12 @@ class Car extends Model
         'maxSpeed',
         'tank',
         'photo',
+        'prize',
+    ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
     ];
 
 
